@@ -1,0 +1,53 @@
+<!-- src/app/components/cart/cart.component.html -->
+<div class="cart-container">
+    <h1>Shopping Cart</h1>
+  
+    <div *ngIf="loading" class="loading">
+      Loading cart...
+    </div>
+  
+    <div *ngIf="error" class="error">
+      {{ error }}
+    </div>
+  
+    <div *ngIf="!loading && !error">
+      <div *ngIf="cartItems.length === 0" class="empty-cart">
+        Your cart is empty. <a routerLink="/">Continue Shopping</a>
+      </div>
+  
+      <div *ngIf="cartItems.length > 0" class="cart-content">
+        <div class="cart-items">
+          <div *ngFor="let item of cartItems" class="cart-item">
+            <img [src]="item.product?.image" [alt]="item.product?.title">
+            <div class="item-details">
+              <h3>{{ item.product?.title }}</h3>
+              <p class="price">${{ item.product?.price }}</p>
+              <div class="quantity-controls">
+                <button (click)="updateQuantity(item, item.quantity - 1)" 
+                        [disabled]="item.quantity <= 1">-</button>
+                <span>{{ item.quantity }}</span>
+                <button (click)="updateQuantity(item, item.quantity + 1)">+</button>
+              </div>
+              <p class="subtotal">Subtotal: ${{ item.subtotal.toFixed(2) }}</p>
+              <button class="remove-btn" (click)="removeItem(item.productId)">
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+  
+        <div class="cart-summary">
+          <h2>Order Summary</h2>
+          <div class="summary-row">
+            <span>Total Items:</span>
+            <span>{{ cartItems.length }}</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span>${{ total.toFixed(2) }}</span>
+          </div>
+          <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
