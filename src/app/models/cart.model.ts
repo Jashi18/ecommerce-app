@@ -1,4 +1,3 @@
-// src/app/models/cart.model.ts
 import { Product } from './product.model';
 
 export interface CartItem {

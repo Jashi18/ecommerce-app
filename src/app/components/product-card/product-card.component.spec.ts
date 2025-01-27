@@ -1,4 +1,3 @@
-// src/app/components/product-card/product-card.component.ts
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../models/product.model';

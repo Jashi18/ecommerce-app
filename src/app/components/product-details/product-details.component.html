@@ -1,0 +1,30 @@
+<div class="product-details-container">
+    <div *ngIf="loading" class="loading">Loading...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+    
+    <div *ngIf="product && !loading" class="product-details">
+      <button class="back-button" routerLink="/">← Back to Products</button>
+      
+      <div class="product-content">
+        <div class="product-image">
+          <img [src]="product.image" [alt]="product.title">
+        </div>
+        
+        <div class="product-info">
+          <h1>{{ product.title }}</h1>
+          <div class="price">${{ product.price }}</div>
+          <div class="rating">
+            <span>Rating: {{ product.rating.rate }}/5</span>
+            <span>({{ product.rating.count }} reviews)</span>
+          </div>
+          <div class="category">Category: {{ product.category }}</div>
+          <p class="description">{{ product.description }}</p>
+          <button class="add-to-cart-btn" (click)="addToCart()">Add to Cart</button>
+        </div>
+        <div class="admin-actions">
+          <button class="edit-btn" (click)="editProduct()">Edit</button>
+          <button class="delete-btn" (click)="deleteProduct()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>

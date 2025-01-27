@@ -1,4 +1,3 @@
-// src/app/components/home/home.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../models/product.model';
@@ -24,7 +23,7 @@ export class HomeComponent implements OnInit {
       next: (products) => {
         this.products = products;
         this.loading = false;
-        console.log('Products loaded:', products); // Add this to debug
+        console.log('Products loaded:', products);
       },
       error: (error) => {
         this.error = 'Failed to load products. Please try again later.';

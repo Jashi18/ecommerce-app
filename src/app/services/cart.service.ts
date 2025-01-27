@@ -1,4 +1,3 @@
-// src/app/services/cart.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -14,7 +13,6 @@ export class CartService {
   private userId = 5;
 
   constructor(private http: HttpClient) {
-    // Load cart from localStorage if exists
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
       this.cartItems.next(JSON.parse(savedCart));
@@ -47,10 +45,8 @@ export class CartService {
   }
 
   private saveCart(items: CartItem[]) {
-    // Save to localStorage
     localStorage.setItem('cart', JSON.stringify(items));
 
-    // Save to API
     const cart: Cart = {
       userId: this.userId,
       date: new Date().toISOString(),
